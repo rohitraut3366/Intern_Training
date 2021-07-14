@@ -133,6 +133,7 @@
    CURL:   curl -H "X-AUTH_TOKEN: gAAAAABg7tta4mdWOXtEtEudACBjwnFlvEA2tqgifzX5n6jRLmaCemqqIQR9t4XqDpGaClVKuuHkgkC8eMN1LOoR1Pf9YIviyj3eeD0FjLZtEJYik0K6FVAEqnp_2-MClNB-MaOmsS3SabcDLG612xWqNgOJby2tLeWsB1y1EdG8z3NelX3LXvE"  http://10.0.78.69/image/v2/images/6caf7a3f-feb9-4fb1-afb2-993c1ef019e6
    
    Requests:
+   
        {}
        
    Response:
@@ -185,10 +186,11 @@
 ```
    End-Point: http://IP/v2/image
    Method: POST
-   CURL:   curl -X POST -H "X-AUTH_TOKEN: gAAAAABg7u5lLgCGyQEj9ytEaBtKCLjFJZI3yGu7q_k7Txz312J26IVIaL0nMQ5Rv_Yd-bIE3ZTJ9IIEM0yA3wTmhhHaxmYnijSZjCD4Hh6ehdsII1If8kwBx8DUNzQ7ZsqpflqQ-sI68IqVs11g2ptR-JhUd427FVoXbK39f4b7IUYTKUhUt78" -H "content-type: application/json" -d '{"disk_format": "qcow2", "min_disk": 2, "min_ram": 1, "name": "centos"}'  http://10.0.78.69/image/v2/imagese/v2/images
+   
+   CURL:   curl -X POST -H "X-AUTH_TOKEN: gAAAAABg7u5lLgCGyQEj9ytEaBtKCLjFJZI3yGu7q_k7Txz312J26IVIaL0nMQ5Rv_Yd-bIE3ZTJ9IIEM0yA3wTmhhHaxmYnijSZjCD4Hh6ehdsII1If8kwBx8DUNzQ7ZsqpflqQ-sI68IqVs11g2ptR-JhUd427FVoXbK39f4b7IUYTKUhUt78" -H "content-type: application/json" -d '{"disk_format": "qcow2", "min_disk": 2, "min_ram": 1, "name": "centos"}'  http://10.0.78.69/image/v2/images
 
    Requests:
-       {
+       {{"name": "Centos 7-Patch-Name", "disk_format": "qcow2", "container_format": null, "visibility": "shared", "size": null, "virtual_size": null, "status": "queued", "checksum": null, "protected": false, "min_ram": 1, "min_disk": 2, "owner": "451b3702cafc46be87c6ed34104e7943", "os_hidden": false, "os_hash_algo": null, "os_hash_value": null, "id": "f1fa3214-a3d0-4f78-b8c0-7674ff5f4538", "created_at": "2021-07-14T14:06:41Z", "updated_at": "2021-07-14T18:38:09Z", "tags": [], "self": "/v2/images/f1fa3214-a3d0-4f78-b8c0-7674ff5f4538", "file": "/v2/images/f1fa3214-a3d0-4f78-b8c0-7674ff5f4538/file", "schema": "/v2/schemas/image"}[centos
           "disk_format" : "qcow2",
           "min_disk": 2,
           "min_ram": 1,
@@ -215,8 +217,66 @@
           "created_at": "2021-07-14T14:06:41Z",
           "updated_at": "2021-07-14T14:06:41Z",
           "tags": [],
-          "self": "/v2/images/f1fa3214-a3d0-4f78-b8c0-7674ff5f4538",
+          "self"{"name": "Centos 7-Patch-Name", "disk_format": "qcow2", "container_format": null, "visibility": "shared", "size": null, "virtual_size": null, "status": "queued", "checksum": null, "protected": false, "min_ram": 1, "min_disk": 2, "owner": "451b3702cafc46be87c6ed34104e7943", "os_hidden": false, "os_hash_algo": null, "os_hash_value": null, "id": "f1fa3214-a3d0-4f78-b8c0-7674ff5f4538", "created_at": "2021-07-14T14:06:41Z", "updated_at": "2021-07-14T18:38:09Z", "tags": [], "self": "/v2/images/f1fa3214-a3d0-4f78-b8c0-7674ff5f4538", "file": "/v2/images/f1fa3214-a3d0-4f78-b8c0-7674ff5f4538/file", "schema": "/v2/schemas/image"}[centos: "/v2/images/f1fa3214-a3d0-4f78-b8c0-7674ff5f4538",
           "file": "/v2/images/f1fa3214-a3d0-4f78-b8c0-7674ff5f4538/file",
           "schema": "/v2/schemas/image"
          }
 ```
+5. Update Image
+```
+   End-Point: http://IP/image/v2/images/{image_id}
+   Method: PATCH
+   
+   CURL: curl -X PATCH -H "content-type: application/openstack-images-v2.1-json-patch" -H "X-AUTH-TOKEN: gAAAAABg7y1JwHj3r9TNcURhW3crv1RsFgM2_J8wD_fcDnosT-ZcRGoPLOtTgKLDWlHfSevyc9k6DjC_yuqconOQ6V4ThwJ0YD_7vBOYjOMdXAw7qo9ysE_mqfXkqHq7iIGjY_KT0vtU3YU5uHCGtLGgVpliNT4Qku252iNQ72ow0-cg" -d '[{"op": "replace", "path": "/name", "value": "Centos 7-Patch-Name"}]' http://10.0.78.69/image/v2/images/f1fa3214-a3d0-4f78-b8c0-7674ff5f4538
+
+   Requests:
+      [
+         {
+            "op": "replace",
+            "path": "/name",
+            "value": "Centos 7-Patch-Name"
+         }
+      ]
+   Response:
+      {
+            "name": "Centos 7-Patch-Name",
+            "disk_format": "qcow2",
+            "container_format": null,
+            "visibility": "shared",
+            "size": null,
+            "virtual_size": null,
+            "status": "queued",
+            "checksum": null,
+            "protected": false,
+            "min_ram": 1,
+            "min_disk": 2,
+            "owner": "451b3702cafc46be87c6ed34104e7943",
+            "os_hidden": false,
+            "os_hash_algo": null,
+            "os_hash_value": null,
+            "id": "f1fa3214-a3d0-4f78-b8c0-7674ff5f4538",
+            "created_at": "2021-07-14T14:06:41Z",
+            "updated_at": "2021-07-14T18:38:09Z",
+            "tags": [],
+            "self": "/v2/images/f1fa3214-a3d0-4f78-b8c0-7674ff5f4538",
+            "file": "/v2/images/f1fa3214-a3d0-4f78-b8c0-7674ff5f4538/file",
+            "schema": "/v2/schemas/image"
+      }
+```
+
+6. DELETE Image
+### Preconditions
+    * You can delete an image in any status except deleted.
+    * The protected attribute of the image cannot be true.
+    * You have permission to perform image deletion under the configured image deletion policy.
+ ```
+   End-Point: http://IP/image/v2/images/{image_id}
+   Method: DELETE
+   
+   CURL:  curl -X DELETE -H "X-AUTH_TOKEN: gAAAAABg7zO01wYM2pyxBgr0zfsv2emQpglwdyB6udcr0c_PJ1HeMCQdjUSnhmf2wEzLjGsN3B0IuC9kIg0eLgj1FqcsQl86YEGlbKJdQ7EhNj9cq3D_rrfGQ6Le55GtmexrWwh5UB8XV5xw8EoGbWL8Pz8Z_msqtvxh1Kb7We9K21Qg5JRUxBg"  http://10.0.78.69/image/v2/images/f1fa3214-a3d0-4f78-b8c0-7674ff5f4538
+
+   Request: Null
+   Response: NULL
+ 
+ ```
+
