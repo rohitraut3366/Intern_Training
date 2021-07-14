@@ -7,13 +7,9 @@
      
  <details>
   <summary>
-    summary
+    1. GET ALL IMAGES
   </summary>
-  details
-</details>
-
-1. GET ALL IMAGES
-```
+  ```
    End-Point: http://IP/v2/images
    CURL:   curl  -X GET -H "X-AUTH_TOKEN: gAAAAABg7s0Bcp2MdxjGTfWrhjnn_wBodKp8esrmiXKMEkh5wwZS00ziRPOrGZrm_mcYH23Vak9QkeiW1dXtjs_04JYJB5Rf96QmGL45Y9Ea7p0A3HQBudmf3wKMPYvjF5Wd8tQKOGxR7Ii__RrR9Q5afkHq3SqZ0xrATlq4NKkIVt32o5wxsOE"  http://10.0.78.69/image/v2/images
 
@@ -124,3 +120,4 @@
           "schema": "/v2/schemas/images"
         }
  ```
+</details>
