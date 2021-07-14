@@ -4,7 +4,7 @@
    * Issue Token
      * Download RC file
      * source rc file
-     * `<openstack token issue>`
+     * run cmd: `openstack token issue`
    * visit: https://docs.openstack.org/api-ref/image/v2/index.html
      
      
