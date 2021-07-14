@@ -1,7 +1,7 @@
 # OSP-GLANCE_API
 
 1. GET ALL IMAGES
-'''
+```
    End-Point: http://IP/v2/images
    Requests:
        {}
@@ -109,4 +109,4 @@
           "first": "/v2/images",
           "schema": "/v2/schemas/images"
         }
- '''
+ ```
