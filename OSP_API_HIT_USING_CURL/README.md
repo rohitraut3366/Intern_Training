@@ -279,3 +279,13 @@
    Response: NULL
  
  ```
+ 
+ 7. PUT Image
+```
+ End-Point API: /v2/images/{image_id}/tags/{tag}
+ Method: PUT
+ 
+ CURL:      curl -X PUT -H "X-AUTH_TOKEN: gAAAAABg79auA-Pka-bMyB2vpoMZ95_OHyaJZDEUgXJM4Gd3oBUcSwF9h3lWLHgREMc48ZDBmpwtUZ50RaN01dOra22m9L-KHhHTNk7RR_HO4DJYXxRJquEcDTiuGg94pUzp_OmP7qWLgD02tQpWnAJa-X0VbPKQdPpvdpK2jaiSU6fux4iwwPg"  http://10.0.78.69/image/v2/images/13d88679-8f83-4d46-bddb-fa3a1cbd14dc/tags/tag1
+   Request: {}
+   Response: {}
+```
