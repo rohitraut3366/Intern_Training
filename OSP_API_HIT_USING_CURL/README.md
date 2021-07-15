@@ -273,16 +273,7 @@
    End-Point: http://IP/image/v2/images/{image_id}
    Method: DELETE
    
-   CURL:  curl -X DELETE -H "X-AUTH_TOKEN: gAAAAABg7zO01wYM
-     },
-     ...
-   }
-
-The other HTTP methods are supported - see `requests.api`. Full documentation
-is at <https://requests.readthedocs.io>.
-
-:copyright: (c) 2017 by Kenneth Reitz.
-:license: Apache 2.0, s2pyxBgr0zfsv2emQpglwdyB6udcr0c_PJ1HeMCQdjUSnhmf2wEzLjGsN3B0IuC9kIg0eLgj1FqcsQl86YEGlbKJdQ7EhNj9cq3D_rrfGQ6Le55GtmexrWwh5UB8XV5xw8EoGbWL8Pz8Z_msqtvxh1Kb7We9K21Qg5JRUxBg"  http://10.0.78.69/image/v2/images/f1fa3214-a3d0-4f78-b8c0-7674ff5f4538
+   CURL:  curl -X DELETE -H "X-AUTH_TOKEN: gAAAAABg7zO01wYMs2pyxBgr0zfsv2emQpglwdyB6udcr0c_PJ1HeMCQdjUSnhmf2wEzLjGsN3B0IuC9kIg0eLgj1FqcsQl86YEGlbKJdQ7EhNj9cq3D_rrfGQ6Le55GtmexrWwh5UB8XV5xw8EoGbWL8Pz8Z_msqtvxh1Kb7We9K21Qg5JRUxBg"  http://10.0.78.69/image/v2/images/f1fa3214-a3d0-4f78-b8c0-7674ff5f4538
 
    Request: NULL
    Response: NULL
