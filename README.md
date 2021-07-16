@@ -1,4 +1,4 @@
-# REDHAT_ASSIGNMENT
+# ASSIGNMENT
 
 1. Explore openstack API reference guide of cinder and glance and construct curl commands for crud operations 
    ref-api-doc: https://docs.openstack.org/api-ref/image/
