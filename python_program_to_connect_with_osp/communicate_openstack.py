@@ -33,11 +33,11 @@ class CommunicateOpenStack(object):
             print(response.headers)
             print(response.text)
 
-        except requests.exceptions.Timeout as e:
-            logger.warning(f"Timeout: {e}")
+        except requests.exceptions.Timeout:
+            logger.warning(f"Timeout")
             print("Timeout")
-        except requests.exceptions.ConnectionError as e:
-            logger.warning(f"ConnectionError: {e}")
+        except requests.exceptions.ConnectionError:
+            logger.warning(f"ConnectionError")
             print("Connection failed")
         except Exception as e:
             logger.warning(f"Exception: {e}")
