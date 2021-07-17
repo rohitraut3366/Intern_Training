@@ -25,7 +25,7 @@ class CommunicateOpenStack(object):
         try:
             response = requests.request(method=argv.method, url=argv.endpoint + argv.api_route,
                                         headers={"X-AUTH-TOKEN": argv.token},
-                                        timeou=15)
+                                        timeout=15)
             if argv.verbose:
                 print(response.text)
                 return
