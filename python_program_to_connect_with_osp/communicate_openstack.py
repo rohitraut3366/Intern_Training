@@ -10,7 +10,9 @@ if not os.path.exists('log/'):
 
 formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(name)s -%(message)s')
 
-handler = TimedRotatingFileHandler(filename='log/client.log', when='midnight', interval=1, encoding='utf8', )
+handler = TimedRotatingFileHandler(filename='log/client.log', when='midnight',
+                                   interval=1, encoding='utf8', )
+
 handler.suffix = "%Y-%m-%d %H:%M:%S"
 handler.setFormatter(formatter)
 
@@ -19,7 +21,7 @@ logger.setLevel(logging.DEBUG)
 logger.addHandler(handler)
 
 
-class CommunicateOpenStack(object):
+class CommunicateOpenStack:
 
     def argument_operation(self, argv):
         try:
@@ -34,10 +36,10 @@ class CommunicateOpenStack(object):
             print(response.text)
 
         except requests.exceptions.Timeout:
-            logger.warning(f"Timeout")
+            logger.warning("Timeout")
             print("Timeout")
         except requests.exceptions.ConnectionError:
-            logger.warning(f"ConnectionError")
+            logger.warning("ConnectionError")
             print("Connection failed")
         except Exception as e:
             logger.warning(f"Exception: {e}")
