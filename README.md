@@ -1,6 +1,6 @@
 # ASSIGNMENT
 
-1. Explore openstack API reference guide of glance and construct curl commands for crud operations 
+1. Explore openstack API reference guide of glance and construct curl commands for crud operations <br />
    ref-api-doc: https://docs.openstack.org/api-ref/image/
 
 2. python program which will accept endpoint,http method (GET or DELETE), API, token etc. and communicate with any OpenStack service to get particular information.
