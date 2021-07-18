@@ -8,7 +8,7 @@ import requests
 if not os.path.exists('log/'):
     os.makedirs('log')
 
-formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(name)s -%(message)s')
+formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
 
 handler = TimedRotatingFileHandler(filename='log/client.log', when='midnight',
                                    interval=1, encoding='utf8', )
@@ -21,9 +21,10 @@ logger.setLevel(logging.DEBUG)
 logger.addHandler(handler)
 
 
-class CommunicateOpenStack:
+class CommunicateOpenStack(object):
 
     def argument_operation(self, argv):
+        """Execution of operation"""
         try:
             response = requests.request(method=argv.method, url=argv.endpoint + argv.api_route,
                                         headers={"X-AUTH-TOKEN": argv.token},
@@ -46,6 +47,7 @@ class CommunicateOpenStack:
             print(f"Exception: {e}")
 
     def add_optional_argument(self, parser):
+        """Register optional argument"""
         parser.add_argument('-v', '--verbose',
                             action="store_false",
                             help="Verbose Output")
@@ -53,6 +55,7 @@ class CommunicateOpenStack:
         return parser
 
     def add_position_argument(self, parser):
+        """Register positional argument"""
         parser.add_argument("endpoint",
                             help="API end point")
 
