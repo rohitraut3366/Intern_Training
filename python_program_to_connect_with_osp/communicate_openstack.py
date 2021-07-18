@@ -1,9 +1,25 @@
+#  Licensed under the Apache License, Version 2.0 (the "License"); you may
+#  not use this file except in compliance with the License. You may obtain
+#  a copy of the License at
+#
+#       http://www.apache.org/licenses/LICENSE-2.0
+#
+#  Unless required by applicable law or agreed to in writing, software
+#  distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+#  WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+#  License for the specific language governing permissions and limitations
+#  under the License.
+
+"""
+Command-line interface for GET and DELETE requests.
+"""
+
 import argparse
 import os
 import logging
-from logging.handlers import TimedRotatingFileHandler
-
 import requests
+
+from logging.handlers import TimedRotatingFileHandler
 
 if not os.path.exists('log/'):
     os.makedirs('log')
@@ -43,7 +59,7 @@ class CommunicateOpenStack(object):
             logger.warning("ConnectionError")
             print("Connection failed")
         except Exception as e:
-            logger.warning(f"Exception: {e}")
+            logger.warning("Exception: %s", e)
             print(f"Exception: {e}")
 
     def add_optional_argument(self, parser):
