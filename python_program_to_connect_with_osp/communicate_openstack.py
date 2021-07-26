@@ -16,31 +16,48 @@ Command-line interface for GET and DELETE requests.
 
 import argparse
 import os
-import logging
+
 import requests
+from oslo_config import cfg
+from oslo_log import log as logging
 
-from logging.handlers import TimedRotatingFileHandler
+from myapp._i18n import _, _LW
 
-if not os.path.exists('log/'):
-    os.makedirs('log')
+CONF = cfg.CONF
+DOMAIN = "oc"
+logging.register_options(CONF)
 
-formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
 
-handler = TimedRotatingFileHandler(filename='log/client.log', when='midnight',
-                                   interval=1, encoding='utf8', )
+def create_log_dir():
+    _dir = CONF.log.dir
+    if not os.path.exists(_dir):
+        os.makedirs(_dir)
+    return _dir
 
-handler.suffix = "%Y-%m-%d %H:%M:%S"
-handler.setFormatter(formatter)
 
-logger = logging.getLogger(__name__)
-logger.setLevel(logging.DEBUG)
-logger.addHandler(handler)
+def prepare():
+
+    grp = cfg.OptGroup("log")
+
+    opts = [cfg.StrOpt("dir"),
+            cfg.StrOpt("file_name"),
+            cfg.StrOpt("level"),
+            cfg.StrOpt("domain")]
+
+    CONF.register_group(grp)
+    CONF.register_opts(opts, grp)
+
+    CONF(default_config_files=["./communicate_openstack.conf"], use_env=False)
+
+    logging.tempest_set_log_file(create_log_dir() + CONF.log.file_name)
+    logging.setup(CONF, DOMAIN)
 
 
 class CommunicateOpenStack(object):
 
     def argument_operation(self, argv):
         """Execution of operation"""
+
         try:
             response = requests.request(method=argv.method, url=argv.endpoint + argv.api_route,
                                         headers={"X-AUTH-TOKEN": argv.token},
@@ -53,14 +70,14 @@ class CommunicateOpenStack(object):
             print(response.text)
 
         except requests.exceptions.Timeout:
-            logger.warning("Timeout")
-            print("Timeout")
+            LOG.warning(_LW("Timeout"))
+            print(_("Timeout"))
         except requests.exceptions.ConnectionError:
-            logger.warning("ConnectionError")
-            print("Connection failed")
+            LOG.warning(_LW("ConnectionError"))
+            print(_("Connection failed"))
         except Exception as e:
-            logger.warning("Exception: %s", e)
-            print(f"Exception: {e}")
+            LOG.warning(_LW("Exception: %s"), e)
+            print(_(f"Exception: {e}"))
 
     def add_optional_argument(self, parser):
         """Register optional argument"""
@@ -96,4 +113,8 @@ class CommunicateOpenStack(object):
 
 
 if __name__ == "__main__":
+    prepare()
+
+    LOG = logging.getLogger(__name__)
+
     CommunicateOpenStack().main()
